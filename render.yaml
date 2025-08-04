@@ -1,25 +1,39 @@
 services:
   - type: web
-    name: cobalt-api
+    name: tiktikdl-api
     runtime: node
-    buildCommand: chmod +x render-build.sh && ./render-build.sh
-    startCommand: node src/cobalt.js
+    plan: free
+    buildCommand: cd api && npm install
+    startCommand: cd api && node src/cobalt-tiktok.js
+    healthCheckPath: /
     envVars:
       - key: NODE_ENV
         value: production
       - key: API_URL
-        value: https://cobalt-api.onrender.com
+        value: https://tiktikdl-api.onrender.com/
       - key: API_PORT
         value: 10000
-      - key: PROCESSING_MAX_SIZE_GB
-        value: 3
+      - key: CORS_WILDCARD
+        value: 0
+      - key: CORS_URL
+        value: https://tiky.netlify.app
       - key: RATELIMIT_WINDOW
         value: 60
       - key: RATELIMIT_MAX
         value: 20
+      - key: SESSION_RATELIMIT_WINDOW
+        value: 60
+      - key: SESSION_RATELIMIT
+        value: 10
+      - key: TUNNEL_RATELIMIT_WINDOW
+        value: 60
+      - key: TUNNEL_RATELIMIT
+        value: 40
       - key: DURATION_LIMIT
         value: 10800
-    buildFilter:
-      paths:
-        - api/**
-    rootDir: api
+      - key: TUNNEL_LIFESPAN
+        value: 90
+      - key: DISABLED_SERVICES
+        value: bilibili,bluesky,dailymotion,instagram,facebook,loom,ok,pinterest,reddit,rutube,snapchat,soundcloud,streamable,tumblr,twitch,twitter,vimeo,vk,xiaohongshu,youtube
+      - key: FORCE_LOCAL_PROCESSING
+        value: never

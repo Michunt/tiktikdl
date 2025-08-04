@@ -8,21 +8,28 @@ Your frontend is deployed on Netlify, but it needs a backend API to actually dow
 ### Choose One of These Options:
 
 ### Option 1: Deploy API on Render.com (Recommended - Free)
+
+#### Method A: One-Click Deploy (Easiest)
+1. Go to https://render.com and sign up
+2. Click "New +" → "Blueprint"
+3. Connect your GitHub account
+4. Select your `Michunt/tiktikdl` repository
+5. Render will automatically detect the `render.yaml` file
+6. Click "Apply"
+7. Wait for deployment (takes 5-10 minutes)
+
+#### Method B: Manual Setup
 1. Go to https://render.com and sign up
 2. Click "New +" → "Web Service"
 3. Connect your GitHub account
 4. Select your `Michunt/tiktikdl` repository
 5. Use these settings:
    - **Name**: tiktikdl-api
-   - **Root Directory**: api
-   - **Build Command**: `npm install`
-   - **Start Command**: `node src/cobalt-tiktok.js`
+   - **Environment**: Node
+   - **Build Command**: `cd api && npm install`
+   - **Start Command**: `cd api && node src/cobalt-tiktok.js`
    - **Instance Type**: Free
-6. Add these Environment Variables (click "Advanced"):
-   - `API_URL`: https://tiktikdl-api.onrender.com/
-   - `API_PORT`: 10000
-   - `CORS_WILDCARD`: 1
-   - Copy other variables from `.env.tiktok`
+6. Environment variables are already in render.yaml
 7. Click "Create Web Service"
 8. Wait for deployment (takes 5-10 minutes)
 9. Copy your API URL (like `https://tiktikdl-api.onrender.com`)
