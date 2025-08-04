@@ -1,12 +1,11 @@
 {
-    "name": "cobalt",
+    "name": "tiktikdl",
     "version": "1.0.0",
-    "dependencies": {
-        "youtubei.js": "^14.0.0",
-        "ffmpeg-static": "^5.0.0"
+    "scripts": {
+        "build": "cd api && npm install",
+        "start": "cd api && node src/cobalt-tiktok.js"
     },
-    "packageManager": "pnpm@9.6.0",
     "engines": {
-        "pnpm": ">=9"
+        "node": ">=18"
     }
 }
