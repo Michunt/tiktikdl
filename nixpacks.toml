@@ -1,0 +1,10 @@
+# nixpacks.toml
+
+[phases.setup]
+nixPkgs = ["nodejs-18_x", "npm-9_x"]
+
+[phases.install]
+cmds = ["cd api && npm install --production"]
+
+[start]
+cmd = "cd api && node src/cobalt-tiktok.js"
